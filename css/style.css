@@ -5,13 +5,14 @@
   --white: #fff;
   --pale_red: #FF7E1B;
   --bg-button-color: #FFAB6A;
+  --bg-color: #f2f2f2;
 }
 
 /* FONTS */
 @font-face {
   font-family: "Kumbh Sans";
-  src: url("KumbhSans-Medium.woff2") format("woff2"),
-  url("KumbhSans-Medium.woff") format("woff");
+  src: url("./fonts/KumbhSans-Medium.woff2") format("woff2"),
+  url("./fonts/KumbhSans-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -19,8 +20,8 @@
 
 @font-face {
   font-family: "Kumbh Sans";
-  src: url("KumbhSans-Bold.woff2") format("woff2"),
-  url("KumbhSans-Bold.woff") format("woff");
+  src: url("./fonts/KumbhSans-Bold.woff2") format("woff2"),
+  url("./fonts/KumbhSans-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -50,7 +51,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  background-color: #fff;
+  background-color: var(--bg-color);
   color: var(--text-color);
 }
 
@@ -160,9 +161,205 @@ img {
 
 .imgs__profile {
   display: block;
+  border-radius: 50%;
   width: 50px;
   height: 50px;
 }
+
+
+/* FEATURES */
+.features {
+  padding-top: 90px;
+  padding-bottom: 132px;
+}
+
+.features__container {
+  display: flex;
+}
+
+.features__imgs {
+  padding: 0;
+  margin: 0;
+  margin-right: 125px;
+  width: 100%;
+  max-width: 445px;
+}
+
+.features__img-link {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 32px;
+}
+
+.features__photo {
+  display: block;
+  width: 445px;
+  height: 445px;
+  border-radius: 15px;
+}
+
+.features__list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  list-style: none;
+}
+
+.features__item:not(:last-child) {
+  margin-right: 31px;
+}
+
+.features__link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.features__link:active {
+  background-image:  linear-gradient(0deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url(Image.png);
+  border: 2px solid #FF7E1B;
+  border-radius: 10px;
+}
+
+.features__img {
+  display: block;
+  width: 88px;
+  height: 88px;
+  border-radius: 10px;
+}
+
+/* FEATURES-INFO */
+.features__info {
+  padding-top: 62px;
+}
+
+.features__titile {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 27px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FF7E1B;
+}
+
+.features__heading {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 32px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 48px;
+  color: #1D2026;
+  }
+
+.features__text {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 28px;
+  font-style: normal;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+}
+
+.number {
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-right: 24px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 35px;
+  color:  var(--black);
+}
+
+.prozent {
+  padding: 7px 8px 4px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #FFEEE2;
+  border-radius: 6px;
+  color: #FF7E1B;
+}
+
+.box-2 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 32px;
+  text-decoration: line-through;
+}
+
+.features__buttons {
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 16px;
+  width: 100%;
+  max-width: 157px;
+  padding: 23px 16px 17px;
+  background-color: #F6F8FD;
+  border-radius: 10px;
+}
+
+.button-minus {
+  text-decoration: none;
+}
+
+.button-zero {
+}
+
+.button-pilus {
+}
+
+.button-premium {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: 272px;
+  padding-top: 23px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding-bottom: 17px;
+  background-color: #FF7E1B;
+  box-shadow: 0px 20px 50px -20px #FF7E1B;
+  border: 0;
+  border-radius: 10px;
+  color: var(--white);
+  text-align: center;
+}
+
+.korzinka-icon {
+  display: block;
+  border: 2px solid red;
+  position: absolute;
+  left: 77px;
+  top: 20px;
+  background-image: url(../img/korzinka-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+
+
+
+
+
+
+
 
 /* MODAL */
 .modal {
