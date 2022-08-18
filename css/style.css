@@ -635,7 +635,6 @@ img {
 .product-page__container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   max-width: 1063px;
 }
 
@@ -644,6 +643,7 @@ img {
   max-width: 445px;
   margin-right: 48px;
 }
+
 
 /* PRODUCT-PAGE-INFO */
 .product-page__info {
