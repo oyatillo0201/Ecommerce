@@ -58,9 +58,11 @@ if(elSiteHeaderCartLink) {
 
 
 // Image showcase
-const elImgShowcaseActiveImg = document.querySelector('.img-showcase__active-img');
-const elsImgShowcaseThumbnailButton = document.querySelectorAll('.js-img-showcase-thumbnail-button');
-const elsImgThumbnail = document.querySelectorAll('.img-showcase__thumbnail')
+const elProductPageGallery = document.querySelector('.product-page__gallery');
+const elImgShowcaseActiveImg = elProductPageGallery.querySelector('.img-showcase__active-img');
+const elsImgShowcaseThumbnailButton = elProductPageGallery.querySelectorAll('.js-img-showcase-thumbnail-button');
+const elsImgThumbnail = elProductPageGallery.querySelectorAll('.img-showcase__thumbnail');
+
 
 elsImgShowcaseThumbnailButton.forEach(function(elButton) {
   elButton.addEventListener('click', function() {
@@ -75,7 +77,6 @@ elsImgShowcaseThumbnailButton.forEach(function(elButton) {
     // Update active image src accordingly
     elImgShowcaseActiveImg.src = elButton.dataset.imgShowcaseBig;
     elImgShowcaseActiveImg.srcset = `${elButton.dataset.imgShowcaseBig} 1x, ${elButton.dataset.imgShowcaseRetina} 2x`;
-    console.log(elButton.dataset)
   });
 });
 
@@ -98,3 +99,109 @@ if(elLightboxClose) {
   } )
 }
 
+
+// Thumbnail click
+const elImgLightboxActiveImg = elLightbox.querySelector('.img-showcase__active-img');
+const elsImgLightboxThumbnailButton = elLightbox.querySelectorAll('.js-img-lightbox-thumbnail-button');
+const elsLightboxImgThumbnail = elLightbox.querySelectorAll('.img-showcase__thumbnail')
+
+
+elsImgLightboxThumbnailButton.forEach(function(elButton) {
+  elButton.addEventListener('click', function() {
+    // Remove active state from all buttons
+    elsLightboxImgThumbnail.forEach(function (elImgThumbnail) {
+      elImgThumbnail.classList.remove(modifiers.imgThumbnailActive);
+    });
+
+    // Add active state to clicked button
+    elButton.parentElement.classList.add(modifiers.imgThumbnailActive);
+
+    // Update active image src accordingly
+    elImgLightboxActiveImg.src = elButton.dataset.imgShowcaseBig;
+    elImgLightboxActiveImg.srcset = `${elButton.dataset.imgShowcaseBig} 1x, ${elButton.dataset.imgShowcaseRetina} 2x`;
+    console.log(elButton.dataset)
+  });
+});
+
+
+// LIGHTBOX CONTROL
+const elLightboxControPrev = elLightbox.querySelector('.js-lightbox-control-prev');
+const elLightboxControNext = elLightbox.querySelector('.js-lightbox-control-next');
+
+if(elLightboxControNext) {
+  elLightboxControNext.addEventListener('click', function() {
+    // Find active li element
+    const elActiveItem = elLightbox.querySelector('.img-showcase__thumbnail--active');
+
+    // Remove active li element's styles
+    elActiveItem.classList.remove(modifiers.imgThumbnailActive);
+
+    let elNextActiveItem;
+
+    // Check if there are any elements after this element
+    if(elActiveItem.nextElementSibling === null) {
+      elNextActiveItem = elsLightboxImgThumbnail[0];
+      // elsLightboxImgThumbnail[0].classList.add(modifiers.imgThumbnailActive);
+    }else {
+      elNextActiveItem = elActiveItem.nextElementSibling;
+      // elActiveItem.nextElementSibling.classList.add(modifiers.imgThumbnailActive);
+    }
+
+    elNextActiveItem.classList.add(modifiers.imgThumbnailActive);
+
+    // Update active image src accordingly
+    elImgLightboxActiveImg.src = elNextActiveItem.querySelector('.img-showcase__thumbnail-button').dataset.imgShowcaseBig;
+    elImgLightboxActiveImg.srcset = `${elNextActiveItem.querySelector('.img-showcase__thumbnail-button').dataset.imgShowcaseBig} 1x, ${elNextActiveItem.querySelector('.img-showcase__thumbnail-button').dataset.imgShowcaseRetina} 2x`;
+});
+}
+
+if(elLightboxControPrev) {
+  elLightboxControPrev.addEventListener('click', function() {
+    // Find active li element
+    const elActiveItem = elLightbox.querySelector('.img-showcase__thumbnail--active');
+
+    // Remove active li element's styles
+    elActiveItem.classList.remove(modifiers.imgThumbnailActive);
+
+    let elNextActiveItem;
+
+    // Check if there are any elements after this element
+    if(elActiveItem.previousElementSibling === null) {
+      elNextActiveItem = elsLightboxImgThumbnail[elsLightboxImgThumbnail.length -1];
+      // elsLightboxImgThumbnail[0].classList.add(modifiers.imgThumbnailActive);
+    }else {
+      elNextActiveItem = elActiveItem.previousElementSibling;
+      // elActiveItem.nextElementSibling.classList.add(modifiers.imgThumbnailActive);
+    }
+
+    elNextActiveItem.classList.add(modifiers.imgThumbnailActive);
+
+    // Update active image src accordingly
+    elImgLightboxActiveImg.src = elNextActiveItem.querySelector('.img-showcase__thumbnail-button').dataset.imgShowcaseBig;
+    elImgLightboxActiveImg.srcset = `${elNextActiveItem.querySelector('.img-showcase__thumbnail-button').dataset.imgShowcaseBig} 1x, ${elNextActiveItem.querySelector('.img-showcase__thumbnail-button').dataset.imgShowcaseRetina} 2x`;
+});
+}
+
+
+const elProductQtyDecrementButton = document.querySelector('.js-product-quantity-decrement-button');
+const elProductQtyIncrementButton = document.querySelector('.js-product-quantity-increment-button');
+const elProductQty = document.querySelector('.product-info__quantity');
+
+if(elProductQtyIncrementButton) {
+  elProductQtyIncrementButton.addEventListener('click', function() {
+    elProductQty.textContent = parseInt(elProductQty.textContent, 10) +1;
+  } )
+}
+
+if(elProductQtyDecrementButton) {
+  elProductQtyDecrementButton.addEventListener('click', function() {
+const qty = parseInt(elProductQty.textContent, 10);
+
+if(qty > 0) {
+  elProductQty.textContent = qty -1 ;
+}
+
+
+
+  } )
+}
